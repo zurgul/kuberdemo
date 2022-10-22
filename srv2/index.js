@@ -11,7 +11,6 @@ const url = `http://${process.env['srv1-url']}:8081`;
 
 server.listen(8082, () => {
   console.log("Started SRV2, port 8082! 💡");
-  console.log('env URL', process.env.URL);
   console.log('env srv1-url', process.env['srv1-url']);
   console.log('url', url);
 });
