@@ -1,0 +1,20 @@
+{
+  "name": "kuberdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:srv1": "docker build -f srv1/Dockerfile -t srv1 --progress=plain .",
+    "build:srv2": "docker build -f srv2/Dockerfile -t srv2 --progress=plain .",
+    "srv1": "docker run -p 8081:8081 -d srv1",
+    "srv2": "docker run -p 8082:8082 -d srv2",
+    "log": "docker logs -f",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}

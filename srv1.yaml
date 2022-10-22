@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: srv1-deploy
+  labels:
+    app: srv1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: srv1
+  template:
+    metadata:
+      labels:
+        app: srv1
+    spec:
+      containers:
+      - name: srv1-docker
+        image: srv1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8081
+        env:
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: srv
+              key: URL   
+        - name: srv2-url
+          valueFrom:
+            configMapKeyRef:
+              name: srv
+              key: srv2-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: srv1-service
+spec:
+  type: NodePort
+  selector:
+    app: srv1
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 35666

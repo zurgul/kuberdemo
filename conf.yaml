@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: srv
+data:
+  URL: srv1-service
+  srv1-url: srv1-service
+  srv2-url: srv2-service
