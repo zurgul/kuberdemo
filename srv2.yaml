@@ -21,11 +21,6 @@ spec:
         ports:
         - containerPort: 8082
         env:
-        - name: URL
-          valueFrom:
-            configMapKeyRef:
-              name: srv
-              key: URL
         - name: srv1-url
           valueFrom:
             configMapKeyRef:
