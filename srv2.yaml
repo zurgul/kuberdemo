@@ -20,6 +20,13 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 8082
+        resources:
+          requests:
+            cpu: 250m
+            memory: 800M
+          limits:
+            cpu: 500m
+            memory: 1G
         env:
         - name: srv1-url
           valueFrom:
